@@ -1,14 +1,14 @@
-#Hello World
+# Hello World
 # print ('Hello world')
 # print ("*" * 10)
 
-#Variable, Integer, Float, Boolean 
+# Variable, Integer, Float, Boolean 
 # price = 10
 # rating = 4.9
 # is_published = True
 # print (price)
 
-#Exercise variable, integer, float and boolean
+# Exercise variable, integer, float and boolean
 # name = "John Smith"
 # age = 20
 # is_new = True
@@ -16,24 +16,24 @@
 # print (age)
 # print (is_new)
 
-#Getting Input
+# Getting Input
 # name = input("what is your name? ")
 # print ("Hello " + name)
 
-#Exercise Getting Input
+# Exercise Getting Input
 # full_name = input("what is yourname? ")
 # color = input("what is your favorite color? ")
 # print (full_name + " likes " + color)
 
-#Type Conversion
-#change date type exp str to int use int() or str(), float(), bool()
+# Type Conversion
+# change date type exp str to int use int() or str(), float(), bool()
 # birth_year = input("birth year: ")
 # print(type(birth_year))
 # age = 2025 - int(birth_year)
 # print(type(age))
 # print(age)
 
-#exercise type conversion
+# exercise type conversion
 # weight = input("how much your weight in kilograms? ")
 # ons = 100 * int(weight)
 # print(ons)
@@ -42,7 +42,7 @@
 # print(weight_kg)
 
 # ---------------------------------------->
-#Strings
+# Strings
 # course = 'python for "beginner"'
 # print(course)
 # course_1 = "Python for beginner"
@@ -70,7 +70,7 @@
 # print(another)
 #<---------------------------------------
 
-#formated strings
+# formated strings
 # first = "dudun"
 # last = "darmawan"
 # message = first + " [" + last + "] is a coder "
@@ -95,7 +95,7 @@
 # print(course.replace("dadan", "Dadan"))
 # print("Dadan" in course)
 
-#aritmatic operations and operator precedence
+# aritmatic operations and operator precedence
 # print(10 ** 5)
 # X = 20
 # X = X / 5
@@ -205,11 +205,11 @@
 # guess_count = 0
 # guess_limit = 3
 # while guess_count < guess_limit :
-#   guess = int(input("guess number : "))
-#   guess_count += 1
-#   if guess == secret_number:
-#     print ("you won!")
-#     break
+#     guess = int(input("guess number : "))
+#     guess_count += 1
+#     if guess == secret_number:
+#         print ("you won!")
+#         break
 # else :
 #     print("you failed!")
 
@@ -457,7 +457,7 @@
 # # list Method#
 # # append for add an element to the end of the list
 # fruit = ["banana", "orange", "apple"]
-# fruit.append("watermelon")
+# fruit.append("watermelon") 
 # print(fruit)
 # # insert for insert an element at a specific position
 # numbers = [1,2,3,4]
@@ -497,6 +497,7 @@
 # # copy for create a shallow copy of the list
 # original = [1,2,3]
 # copy_list = original.copy()
+# original.insert(3, 4)
 # print(original)
 # print(copy_list)
 # # clear for remove all element from the list
