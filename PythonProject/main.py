@@ -728,3 +728,141 @@
 # print(cards)
 
 
+# 28. number guessing game
+# import random
+
+# lowest_num = 0
+# highest_num = 100
+# answer = random.randint(lowest_num, highest_num)
+# guesses = 0
+# is_running = True
+
+# print("Python Number Guessing Game")
+# print(f"Select a number between {lowest_num} dan {highest_num}")
+
+# while is_running:
+    
+#     guess = input("Enter your guess: ")
+
+#     if guess.isdigit():
+#         guess = int(guess)
+#         guesses += 1
+
+#         if guess < lowest_num or guess > highest_num:
+#             print("That number is out of range")
+#             print(f"Select a number between {lowest_num} dan {highest_num}")
+#         elif guess < answer:
+#             print("To Low! Try again")
+#         elif guess > answer:
+#             print("To High! Try again")
+#         else:
+#             print(f"Correct!! The answer was {answer}")
+#             print(f"Number of guesses is {guesses}")
+#             is_running = False
+
+#     else:
+#         print("Invalid guess")
+#         print(f"Please select a number between {lowest_num} and {highest_num}")
+
+
+# 29. rock, paper, scissors game
+# import random
+
+# print("Python Choice a game rock, paper, scissors")
+# options = ("rock", "paper", "scissors")
+# playing = True
+
+# while playing:
+
+#     player = None
+#     computer = random.choice(options)
+
+#     while player not in options:
+#         player = input("Enter a choice between (rock, paper, scissors): ")
+
+#     print(f"Player : {player}")
+#     print(f"computer : {computer}")
+
+#     if player == computer:
+#         print("It's a tie")
+#     elif player == "rock" and computer == "scissors":
+#         print("You Win!!")
+#     elif player == "paper" and computer == "rock":
+#         print("You Win!!")
+#     elif player == "scissors" and computer == "paper":
+#         print("You Win!!")
+#     else:
+#         print("You Lose!!")
+
+#     if not input("Do you want Play again (y/n)?: ").lower() == "y":
+#     # if not play_again == "y":
+#         playing = False
+
+# print("Thanks for playing this game")
+
+# 30. Dice roller program
+# import random
+
+# # print("\u25CF \u250C \u2500 \u2510 \u2502 \u2514 \u2518")
+# # "● ┌ ─ ┐ │ └ ┘"
+# "┌─────────┐"
+# "│         │"
+# "│         │"
+# "│         │"
+# "└─────────┘"
+# dice_art = {
+#     1:("┌─────────┐", 
+#        "│         │",
+#        "│    ●    │",
+#        "│         │",
+#        "└─────────┘"),
+#     2:("┌─────────┐",
+#        "│  ●      │",
+#        "│         │",
+#        "│      ●  │",
+#        "└─────────┘"),   
+#     3:("┌─────────┐",
+#        "│  ●      │",
+#        "│    ●    │",
+#        "│      ●  │",
+#        "└─────────┘"),
+#     4:("┌─────────┐",
+#        "│  ●   ●  │",
+#        "│         │",
+#        "│  ●   ●  │",
+#        "└─────────┘"),
+#     5:("┌─────────┐",
+#        "│  ●   ●  │",
+#        "│    ●    │",
+#        "│  ●   ●  │",
+#        "└─────────┘"),
+#     6:("┌─────────┐",
+#        "│  ●   ●  │",
+#        "│  ●   ●  │",
+#        "│  ●   ●  │",
+#        "└─────────┘")
+# }
+
+# dice = []
+# total = 0
+# num_of_dice = int(input("How many dice?: "))
+
+# for die in range(num_of_dice):
+#     dice.append(random.randint(1, 6))
+
+# # print(dice)
+
+# # ----------------vertical dice-----------------------
+# # for die in range(num_of_dice):
+# #     for line in dice_art.get(dice[die]):
+# #         print(line)
+
+# # ----------------horizontal dice----------------------
+# for line in range(5):
+#     for die in dice:
+#         print(dice_art.get(die)[line], end="")
+#     print()
+
+# for die in dice:
+#     total += die
+# print(f"total : {total}")
