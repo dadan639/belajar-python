@@ -768,7 +768,7 @@
 # 29. rock, paper, scissors game
 # import random
 
-# print("Python Choice a game rock, paper, scissors")
+# print("Python Choice a rock, paper, scissors game")
 # options = ("rock", "paper", "scissors")
 # playing = True
 
@@ -865,4 +865,121 @@
 
 # for die in dice:
 #     total += die
-# print(f"total : {total}")
+# print(f"total : {total}"j)
+
+# 31. function = A block of reusable code 
+#                place() after the function name to invoke it
+
+# example if not use a function
+# print("Happy birthday to you")
+# print("You are old")
+# print("happy birthday to you")
+# print()
+# print("Happy birthday to you")
+# print("You are old")
+# print("happy birthday to you")
+# print()
+# print("Happy birthday to you")
+# print("You are old")
+# print("happy birthday to you")
+# print()
+
+# example use a function
+# def happy_birtday():
+#     print("Happy birthday to you")
+#     print("You are old")
+#     print("happy birthday to you")
+#     print()
+
+# happy_birtday()
+# happy_birtday()
+# happy_birtday()
+
+# paramater function
+# def happy_birtday(name, old):
+#     print(f"Happy birthday {name}")
+#     print(f"You are {old} years old")
+#     print("happy birthday to you")
+#     print()
+
+# happy_birtday("Dadan", 21)
+# happy_birtday("Wisnu", 18)
+
+# another example parameter function
+# def display_invoice(name, amount, due_date):
+#     print(f"Hello {name}")
+#     print(f"Your bill is ${amount:.2f} is due: {due_date}")
+
+# display_invoice("Dadan", 5.95, "25/05")
+
+# return = statement used to end a function 
+#          and send a result back to the caller
+
+# def add(x, y):
+#     return(x + y)
+
+# def subtract(x, y):
+#     return(x - y)
+
+# def divide(x, y):
+#     return(x / y)
+
+# def multiply(x, y):
+#     return(x * y)
+
+# print(add(5, 2))
+# print(subtract(5, 2))
+# print(divide(5, 2))
+# print(multiply(5, 2))
+
+# def full_name(first, last):
+#     first = first.capitalize()
+#     last = last.capitalize()
+#     return (f"Hello {first} {last}")
+#     # return "hello " + first + " " + last
+
+# name = full_name("dadan", "darmawan")
+# print(name)
+
+
+# default argument = A default value for certain parameters 
+#                    default is used when that argument is omitted 
+#                    make your functions more flexible, reduces # of arguments 
+#                    1. postions, 2. defaults, 3. keyword, 4. arbitrary
+
+# import time
+
+# without default argument
+# def count(start, end):
+#     for x in range(start, end):
+#         print(x)
+#         time.sleep(1)
+#     print("Done")
+
+# count(0, 10)
+
+# with default argument
+# def count(end, start=0):
+#     for x in range(start, end):
+#         print(x)
+#         time.sleep(1)
+#     print("Done")
+
+# count(10, 5)
+
+# another example default argemnts
+
+# def net_price(list_price, discount=0, tax=0.01):
+#     return list_price * (1 + discount) * (1 + tax)
+
+# print(net_price(100))
+
+# 33. keyword arguments = an argument preceded by an identifer
+#                         helps with readability 
+#                         order of arguments dosn't matter 
+#                         1. positional 2. default 3. Keyword 4. arbitrary
+
+# def full_name(greeting, tittle, first, last):
+#     return f"{greeting}, {tittle}{first} {last}"
+
+# print(full_name("Hello", tittle="mr.", last="Darmawan", first="Dadan"))
