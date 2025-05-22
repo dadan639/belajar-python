@@ -590,12 +590,14 @@
 
 # #argument
 # def show_numbers(*args):
-#     print(args)  # Output: (1, 2, 3)
+    # print(sum(args))  # Output: (1, 2, 3)
 
 # show_numbers(1, 2, 3)
 
 # def show_info(**kwargs):
-#     print(kwargs)  # Output: {'name': 'Dadan', 'age': 25}
+#     for key, value in kwargs.items():
+#         print(f"{key}: {value}")
+#     # print(kwargs)  # Output: {'name': 'Dadan', 'age': 25}
 
 # show_info(name="Dadan", age=25)
 
