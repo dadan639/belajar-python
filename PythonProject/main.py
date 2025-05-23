@@ -1231,3 +1231,112 @@
 #             return False
         
 # print(is_weekend("Monday"))
+
+
+# 39. Modules = a file containing code you want to include in your program 
+#               use 'import' to include a module (built-in or your own) 
+#               useful to break up a large porgram reusable separate files
+
+# ----------------------- main.py -----------------------
+# print(help("modules")) # for see all available modules
+# print(help("math")) # for see the math from modules
+
+# import math
+# print(math.pi)
+# import math as m
+# print(m.pi)
+# from math import pi
+# print(pi)
+# from math import e
+# print(e)
+# print()
+# a, b, c, d = 1, 2, 3, 4
+# print(e ** a)
+# print(e ** b)
+# print(e ** c)
+# print(e ** d)
+# print(e ** e)
+
+# import example
+
+# result = example.pi
+# print(result)
+
+# print(example.cube(2))
+# print(example.square(2))
+# print(example.circumference(2))
+# print(example.area(2))
+
+# 40. Variable scope = where a variable is visible and accessible
+#     scope resolution = (LEGB) Local -> Enclosed -> Global -> Built-in
+
+# Local
+# def func1():
+#     a = 1
+#     print(a) 
+
+# def func2():
+#     b = 2
+#     print(b) 
+
+# func1()
+# func2()
+
+# Enclosed
+# def func1():
+#     x = 1
+
+#     def func2():
+#         print(x) 
+#     func2()
+
+# func1()
+
+# Global
+# def func1():
+#     # x =1
+#     print(x)
+
+# def func2():
+#     # x =2
+#     print(x)
+
+# x = 3
+
+# func1()
+# func2()
+
+# Built-in
+# from math import e
+
+# def func1():
+#     print(e)
+
+# e = 3
+
+# func1()
+
+# 41. if __name__ = __main__ : (this script can be imported OR run standalone)
+#                               functions and classes in this module can be reused 
+#                               without the main block of code executing
+
+# ex. library = import library for functionality
+#               when running library directly, display a help page
+
+# print(dir())
+# print(__name__)
+
+# from example import *
+# print(__name__)
+
+# def favorite_food(food):
+#     print(f"Your favorite food is {food}")
+
+# def main():
+#     print("This is script 1")
+#     print("And you cannot see in the script2")
+#     favorite_food("pizza")
+#     print("GoodBye!")
+
+# if __name__ == "__main__":
+#     main()
