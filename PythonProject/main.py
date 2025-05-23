@@ -945,7 +945,7 @@
 # default argument = A default value for certain parameters 
 #                    default is used when that argument is omitted 
 #                    make your functions more flexible, reduces # of arguments 
-#                    1. postions, 2. defaults, 3. keyword, 4. arbitrary
+#                    1. postions, 2. DEFAULT, 3. keyword, 4. arbitrary
 
 # import time
 
@@ -977,9 +977,257 @@
 # 33. keyword arguments = an argument preceded by an identifer
 #                         helps with readability 
 #                         order of arguments dosn't matter 
-#                         1. positional 2. default 3. Keyword 4. arbitrary
+#                         1. positional 2. default 3. KEYWORD 4. arbitrary
 
 # def full_name(greeting, tittle, first, last):
 #     return f"{greeting}, {tittle}{first} {last}"
 
 # print(full_name("Hello", tittle="mr.", last="Darmawan", first="Dadan"))
+
+
+
+# 23. *args     = allows you to pass multiple non-key arguments
+#               = allows you to pass multiple keyword-arguments 
+#                 * unpacking operator 
+#                 1. positional 2. default 3. keyword 4.ARBITRARY
+
+# def add_operator(a, b):
+#     return a + b
+
+# print(add_operator(2, 2))
+
+# def add_operator(*args):
+#     print(type(args))
+
+# add_operator(2, 2, 2)
+
+# def add(*args):
+#     total = 0
+#     for arg in args:
+#         total += arg
+#     return total
+
+# print(add(2, 2))
+
+# def display_name(*args):
+#     for arg in args:
+#         print(arg, end=" ")
+
+# display_name("Dr.", "Dadan", "stronger", "Darmawan")
+
+# def print_address(**kwargs):
+#     for key, value in kwargs.items():
+#         print(f"{key} : {value}")
+
+# print_address(street="Jl. Patinggi",
+#               village="Bunihayu",
+#               city="Subang",
+#               state="Idn",
+#               zip="41281")
+
+# def print_address(*args, **kwargs):
+#     for arg in args:
+#         print(arg, end=" ")
+#     print()
+#     if "village" in kwargs:
+#         print(f"{kwargs.get("street")} {kwargs.get("village")}")
+#     else:
+#         print(f"{kwargs.get("street")}")
+
+#     print(f"{kwargs.get("city")} {kwargs.get("state")} {kwargs.get("zip")}")
+
+# print_address("Mr.", "Dadan", "Darmawan", "I",
+#               street="Jl. Patinggi",
+#               village="Bunihayu",
+#               city="Subang",
+#               state="Indonesia",
+#               zip="41281")
+
+# 35. Iterables = An object/collection that can return its elements one at a time, 
+#                 allowing it to be iterated over in a loop
+
+# numbers = [1, 2, 3, 4, 5]
+# fruits = ("Banana", "Orange", "Grave")
+# motorcycles = {"Honda", "Yamaha", "Suzuki"}
+# my_dictionary = {"A" : 1,
+#                  "B" : 2,
+#                  "C" : 3}
+
+# for number in reversed(numbers):
+#     print(number, end=" ")
+    
+# print()
+# for fruit in reversed(fruits):
+#     print(fruit, end=" ")
+
+# print()
+# for motorcycle in motorcycles:
+#     print(motorcycle, end=" ")
+
+# print()
+# for key, value in my_dictionary.items():
+#     print(f"{key} : {value}")
+
+# 36. Membership operators = used to test whether a value or variable is found in a sequence 
+#                            (string, list, tuple, set or dictionary) 
+#                            1. in 
+#                            2. not in
+
+# word = "APPLE"
+# letter = input("guess a letter in the secret word: ")
+
+# if letter in word:
+#     print(f"There is a {letter}")
+# else:
+#     print(f"{letter} was not found")
+
+# if letter not in word:
+#     print(f"{letter} was not found")
+# else:
+#     print(f"There is a {letter}")
+
+# students = {"Dadan", "Wisnu", "Haris"}
+# student = input("Enter the name of student: ")
+
+# if student in students:
+#     print(f"{student} is a student")
+# else:
+#     print(f"{student} was not student")
+
+# if student not in students:
+#     print(f"{student} was not student")
+# else:
+#     print(f"{student} is a student")
+    
+# grades = {"Dadan" : "A", 
+#             "Wisnu" : "B", 
+#             "Haris" : "C"}
+# student = input("Enter name that you want find a grade of the student: ")
+
+# if student in grades:
+#     print(f"{student}'s grade is {grades[student]}")
+# else:
+#     print(f"The student was not found")
+
+# email = "dadan@gmail.com"
+
+# if "@" in email and "." in email:
+#     print("Valid Email")
+# else:
+#     print("Invalid Email")
+
+
+# 37. List comprehensions = A concise way to create lists in python 
+#                           compact an easier to read than traditional loops 
+#                           [expression for value in iterable if condition]
+
+# traditional loops
+# doubles = []
+# for x in range(1, 11):
+#     doubles.append(x * 2)
+# print(doubles)
+
+# list comprehensive
+# doubles = [x * 2 for x in range(1, 11)]
+# triples = [x * 3 for x in range(1, 11)]
+# squares = [x * 4 for x in range(1, 11)]
+# print(squares)
+
+# fruits = ["banana", "apple", "orange", "grave"]
+# fruits = [x.capitalize() for x in fruits]
+# fruit = [x.upper() for x in ["banana", "apple", "orange", "grave"]]
+# fruit_chars = [x[0] for x in fruits]
+# print(fruits)
+# print(fruit_chars)
+
+# numbers = [1, -2, 3, -4, 5, 6, -7, 8]
+# positive_nums = [nums for nums in numbers if nums >= 0]
+# negative_nums = [nums for nums in numbers if nums < 0]
+# even_nums = [nums for nums in numbers if nums % 2 == 0]
+# odd_nums = [nums for nums in numbers if nums % 2 == 1]
+# print(odd_nums)
+
+# grades = [85, 77, 50, 90, 59]
+# passing_grades = [grade for grade in grades if grade >= 60]
+# print(passing_grades)
+
+
+# 38. match-case statements (switch) = An alternative to using many 'elif' statements 
+#                                      Execute some code if a value matches a 'case' 
+#                                      Benefits: cleaner and syntax is more readable
+
+# traditional elif
+# def day_of_week(day):
+#     if day == 1:
+#         return "It's Sunday"
+#     elif day == 2:
+#         return "It's Monday"
+#     elif day == 3:
+#         return "It's Tuesday"
+#     elif day == 4:
+#         return "It's Wednesday"
+#     elif day == 5:
+#         return "It's Thursday"
+#     elif day == 6:
+#         return "It's Friday"
+#     elif day == 7:
+#         return "It's Saturday"
+#     else:
+#         return "not a valid day"
+    
+# print(day_of_week(7))
+
+# match case
+# def day_of_week(day):
+#     match day:
+#         case 1:
+#             return "It's Sunday"
+#         case 2:
+#             return "It's Monday"
+#         case 3:
+#             return "It's Tuesday"
+#         case 4:
+#             return "It's Wednesday"
+#         case 5:
+#             return "It's Thursday"
+#         case 6:
+#             return "It's Friday"
+#         case 7:
+#             return "It's Saturday"
+#         case _:
+#             return "not a valid day"
+    
+# print(day_of_week(1))
+
+# def is_weekend(day):
+#     match day:
+#         case "Sunday":
+#             return True
+#         case "Monday":
+#             return False
+#         case "Tuesday":
+#             return False
+#         case "Wednesday":
+#             return False
+#         case "Thursday":
+#             return False
+#         case "Friday":
+#             return False
+#         case "Saturday":
+#             return True
+#         case _:
+#             return False
+        
+# print(is_weekend("Sunday"))
+
+# with | (or) operator
+# def is_weekend(day):
+#     match day:
+#         case "Sunday" | "Saturday":
+#             return True
+#         case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+#             return False
+#         case _:
+#             return False
+        
+# print(is_weekend("Monday"))
