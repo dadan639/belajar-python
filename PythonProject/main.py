@@ -1501,36 +1501,124 @@
 #     main()
 
 # 44. encryption program
+# import random
+# import string
+
+# chars = " " + string.punctuation + string.digits + string.ascii_letters
+# chars = list(chars)
+# key = chars.copy()
+
+# random.shuffle(key)
+
+# # print(f"chars : {chars}")
+# # print(f"key   : {key}")
+
+# # Encript
+# plain_text = input("Enter a message to encript: ")
+# cipher_text = ""
+
+# for letter in plain_text:
+#     index = chars.index(letter)
+#     cipher_text += key[index]
+
+# print(f"Original message : {plain_text}")
+# print(f"encrypted message : {cipher_text}")
+
+# # Decrypt
+# cipher_text = input("Enter a message to encript: ")
+# plain_text = ""
+
+# for letter in cipher_text:
+#     index = key.index(letter)
+#     plain_text += chars[index]
+
+# print(f"encrypted message : {cipher_text}")
+# print(f"Original message : {plain_text}")
+
+# 45. hangman game
+from words import animals
 import random
-import string
 
-chars = " " + string.punctuation + string.digits + string.ascii_letters
-chars = list(chars)
-key = chars.copy()
+# hewan = ("singa", "harimau", "buaya")
+# dictionary of key:()
+hangman_art = {0:("   ",
+                  "   ",
+                  "   "),
+               1:(" o ",
+                  "   ",
+                  "   "),
+               2:(" o ",
+                  " | ",
+                  "   "),
+               3:(" o ",
+                  "/| ",
+                  "   "),
+               4:(" O ",
+                  "/|\\",
+                  "   "),
+               5:(" o ",
+                  "/|\\",
+                  "/  "),
+               6:(" o ",
+                  "/|\\",
+                  "/ \\")
+               }
 
-random.shuffle(key)
+# for line in hangman_art[6]:
+#     print(line)
 
-# print(f"chars : {chars}")
-# print(f"key   : {key}")
+def display_man(wrong_guesses):
+    print("*****************")
+    for line in hangman_art[wrong_guesses]:
+        print(line)
+    print("*****************")
 
-# Encript
-plain_text = input("Enter a message to encript: ")
-cipher_text = ""
+def display_hint(hint):
+    print(" ".join(hint))
 
-for letter in plain_text:
-    index = chars.index(letter)
-    cipher_text += key[index]
+def display_answer(answer):
+    print (" ".join(answer))
 
-print(f"Original message : {plain_text}")
-print(f"encrypted message : {cipher_text}")
+def main():
+    answer = random.choice(animals)
+    hint = ["_"] * len(answer)
+    wrong_guesses = 0
+    guesesd_letters = set()
+    is_running = True
 
-# Decrypt
-cipher_text = input("Enter a message to encript: ")
-plain_text = ""
+    while is_running:
+        display_man(wrong_guesses)
+        display_hint(hint)
+        # display_answer(answer)
+        guess = input("Enter a letter: ").lower()
 
-for letter in cipher_text:
-    index = key.index(letter)
-    plain_text += chars[index]
+        if len(guess) != 1 or not guess.isalpha():
+            print("Invalid input")
+            continue
 
-print(f"encrypted message : {cipher_text}")
-print(f"Original message : {plain_text}")
+        if guess in guesesd_letters:
+            print(f"{guess} is already guessed")
+            continue
+
+        guesesd_letters.add(guess)
+
+        if guess in answer:
+            for i in range(len(answer)):
+                if answer[i] == guess:
+                    hint[i] = guess
+        else:
+            wrong_guesses += 1
+
+        if "_" not in hint:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("YOU WIN!!!")
+            is_running = False
+        elif wrong_guesses >= len(hangman_art)- 1:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("YOU Lose!!!")
+            is_running = False
+
+if __name__ == "__main__":
+    main()
