@@ -1719,3 +1719,173 @@
 # mouse.sleep()
 
 # cat.speak()
+
+# 49. Multiple inheritance = inherit from more than one parent class 
+#                            C(A, B)
+
+#     Multilevel inheritance = inherit from a parent which inherits from another parent
+#                              C(B) <- B(A) <- A
+
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
+        
+#     def eat(self):
+#         print(f"{self.name} is eating")
+
+#     def sleep(self):
+#         print(f"{self.name} is sleeping")
+
+# class Prey(Animal):
+#     def flee(self):
+#         print(f"{self.name} is fleeing")
+
+# class Predator(Animal):
+#     def hunt(self):
+#         print(f"{self.name} is hunting")
+
+# class Rabbit(Prey):
+#     pass
+
+# class Hawk(Predator):
+#     pass
+
+# class Fish(Prey, Predator):
+#     pass
+
+# rabbit = Rabbit("Nisa")
+# hawk = Hawk("Nurul")
+# fish = Fish("Dadan")
+
+# rabbit.flee()
+# hawk.hunt()
+# fish.flee()
+
+# hawk.sleep()
+# rabbit.sleep()
+# fish.sleep()
+# hawk.eat()
+# rabbit.eat()
+# fish.eat()
+
+# 50. Super() = Function used in a child class to call methods from a parent class (Superclass) 
+#               Allows you to extend the functionality of the inherited methods
+
+# class Shape:
+#     def __init__(self, color, is_filled):
+#         self.color = color
+#         self.is_filled = is_filled
+
+#     def describe(self):
+#         print(f"Its is {self.color} and {"filled" if self.is_filled else "Not filled"}")
+
+# class Circle(Shape):
+#     def __init__(self, color, is_filled, radius):
+#         super().__init__(color, is_filled)
+#         self.radius = radius
+
+#     def describe(self):
+#         print(f"It is a Circle with an area of {3.14 * self.radius * self.radius}cm^2")
+#         super().describe()
+
+# class Square(Shape):
+#     def __init__(self, color, is_filled, width):
+#         super().__init__(color, is_filled)
+#         self.width = width
+
+#     def describe(self):
+#         print(f"It is a Square with an area of {self.width * self.width}cm^2")
+#         super().describe()
+
+# class Triangle(Shape):
+#     def __init__(self, color, is_filled, width, hight):
+#         super().__init__(color, is_filled)
+#         self.width = width
+#         self.hight = hight
+
+#     def describe(self):
+#         print(f"It is a Triangle with an area of {self.width * self.hight * 0.5}cm^2")
+#         super().describe()
+
+# circle = Circle("Red", True, 6)
+# square = Square("Blue", False, 7)
+# triangle = Triangle("Green", True, 5, 8)
+
+# print(circle.color, circle.is_filled, circle.radius)
+# print(square.color, square.is_filled, square.width)
+# print(triangle.color, triangle.is_filled, triangle.width, triangle.hight)
+
+# circle.describe()
+# square.describe()
+# triangle.describe()
+
+# 51. Polymorphism = Greek word that means to "Have many form or faces" 
+#                    Poly = Many 
+#                    Morphe = Form
+
+#                    TWO WAYS TO ACHIEVE POLYMORPHISM 
+#                    1. Inheritance = An object could be treated of the same type as a parent class 
+#                    2. "Duck Typing" = object must have necessary attributes/methods
+
+# from abc import ABC, abstractmethod
+
+# class Shape(ABC):
+    
+#     @abstractmethod
+#     def area(self):
+#         pass
+
+# class Circle(Shape):
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     def area(self):
+#         return 3.14 * self.radius ** 2
+
+# class Square(Shape):
+#     def __init__(self, side):
+#         self.side = side
+
+#     def area(self):
+#         return self.side ** 2
+
+# class Triangle(Shape):
+#     def __init__(self, base, hight):
+#         self.base = base
+#         self.hight = hight
+
+#     def area(self):
+#         return self.base * self. hight / 2
+    
+# class Pizza(Circle):
+#     def __init__(self, radius, topping):
+#         super().__init__(radius)
+#         self.topping = topping
+
+# shapes = [Circle(3), Square(4), Triangle(5, 6), Pizza(10, "Cheese")]
+
+# for shape in shapes:
+#     print(f"{shape.area()}cm^2")
+
+# 52. Duck Typing = Another way to archieve polymophism besides inheritance 
+#                   Objek must have the minimum necessary attributes/methods 
+#                   " If it looks like a duck and quacks like a duck, It must be a duck."
+
+# class Animal:
+#     alive = True
+
+# class Dog(Animal):
+#     def speak(self):
+#         print("Woof")
+
+# class Cat(Animal):
+#     def speak(self):
+#         print("Meow")
+
+# class Car:
+#     def speak(self):
+#         print("Horn")
+# animals = [Dog(), Cat(), Car()]
+
+# for animal in animals:
+#     animal.speak()
