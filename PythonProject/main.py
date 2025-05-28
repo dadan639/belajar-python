@@ -1536,89 +1536,186 @@
 # print(f"Original message : {plain_text}")
 
 # 45. hangman game
-from words import animals
-import random
+# from words import animals
+# import random
 
-# hewan = ("singa", "harimau", "buaya")
-# dictionary of key:()
-hangman_art = {0:("   ",
-                  "   ",
-                  "   "),
-               1:(" o ",
-                  "   ",
-                  "   "),
-               2:(" o ",
-                  " | ",
-                  "   "),
-               3:(" o ",
-                  "/| ",
-                  "   "),
-               4:(" O ",
-                  "/|\\",
-                  "   "),
-               5:(" o ",
-                  "/|\\",
-                  "/  "),
-               6:(" o ",
-                  "/|\\",
-                  "/ \\")
-               }
+# # hewan = ("singa", "harimau", "buaya")
+# # dictionary of key:()
+# hangman_art = {0:("   ",
+#                   "   ",
+#                   "   "),
+#                1:(" o ",
+#                   "   ",
+#                   "   "),
+#                2:(" o ",
+#                   " | ",
+#                   "   "),
+#                3:(" o ",
+#                   "/| ",
+#                   "   "),
+#                4:(" O ",
+#                   "/|\\",
+#                   "   "),
+#                5:(" o ",
+#                   "/|\\",
+#                   "/  "),
+#                6:(" o ",
+#                   "/|\\",
+#                   "/ \\")
+#                }
 
-# for line in hangman_art[6]:
-#     print(line)
+# # for line in hangman_art[6]:
+# #     print(line)
 
-def display_man(wrong_guesses):
-    print("*****************")
-    for line in hangman_art[wrong_guesses]:
-        print(line)
-    print("*****************")
+# def display_man(wrong_guesses):
+#     print("*****************")
+#     for line in hangman_art[wrong_guesses]:
+#         print(line)
+#     print("*****************")
 
-def display_hint(hint):
-    print(" ".join(hint))
+# def display_hint(hint):
+#     print(" ".join(hint))
 
-def display_answer(answer):
-    print (" ".join(answer))
+# def display_answer(answer):
+#     print (" ".join(answer))
 
-def main():
-    answer = random.choice(animals)
-    hint = ["_"] * len(answer)
-    wrong_guesses = 0
-    guesesd_letters = set()
-    is_running = True
+# def main():
+#     answer = random.choice(animals)
+#     hint = ["_"] * len(answer)
+#     wrong_guesses = 0
+#     guesesd_letters = set()
+#     is_running = True
 
-    while is_running:
-        display_man(wrong_guesses)
-        display_hint(hint)
-        # display_answer(answer)
-        guess = input("Enter a letter: ").lower()
+#     while is_running:
+#         display_man(wrong_guesses)
+#         display_hint(hint)
+#         # display_answer(answer)
+#         guess = input("Enter a letter: ").lower()
 
-        if len(guess) != 1 or not guess.isalpha():
-            print("Invalid input")
-            continue
+#         if len(guess) != 1 or not guess.isalpha():
+#             print("Invalid input")
+#             continue
 
-        if guess in guesesd_letters:
-            print(f"{guess} is already guessed")
-            continue
+#         if guess in guesesd_letters:
+#             print(f"{guess} is already guessed")
+#             continue
 
-        guesesd_letters.add(guess)
+#         guesesd_letters.add(guess)
 
-        if guess in answer:
-            for i in range(len(answer)):
-                if answer[i] == guess:
-                    hint[i] = guess
-        else:
-            wrong_guesses += 1
+#         if guess in answer:
+#             for i in range(len(answer)):
+#                 if answer[i] == guess:
+#                     hint[i] = guess
+#         else:
+#             wrong_guesses += 1
 
-        if "_" not in hint:
-            display_man(wrong_guesses)
-            display_answer(answer)
-            print("YOU WIN!!!")
-            is_running = False
-        elif wrong_guesses >= len(hangman_art)- 1:
-            display_man(wrong_guesses)
-            display_answer(answer)
-            print("YOU Lose!!!")
-            is_running = False
+#         if "_" not in hint:
+#             display_man(wrong_guesses)
+#             display_answer(answer)
+#             print("YOU WIN!!!")
+#             is_running = False
+#         elif wrong_guesses >= len(hangman_art)- 1:
+#             display_man(wrong_guesses)
+#             display_answer(answer)
+#             print("YOU Lose!!!")
+#             is_running = False
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+# 46. python object oriented programming
+# object    = A "bundle" of related attributes (variables) and methods (functions)
+#             Ex. phone, cup, book
+#             You need a "class" to create many objects
+# class     = (blueprint) used to design the structure and layout of an object
+
+# class Car:
+#     def __init__(self, model, year, color, for_sale):
+#         self.model = model
+#         self.year = year
+#         self.color = color
+#         self.for_sale = for_sale    
+
+#     def drive(self):
+#         print(f"You drive the {self.color} {self.model} that car is created by {self.year}")
+
+#     def stop(self):
+#         print(f"You stop the {self.color} {self.model} that car is created by {self.year}")
+
+# car1 = Car("Toyota Zenix", 2024, "White", False)
+# car2 = Car("Toyota Yaris Cross", 2024, "White", False)
+# car3 = Car("Suzuki Ertiga", 2023, "White", True)
+
+# print(car1.model, car1.year, car1.color, car1.for_sale)
+# print(car2.model, car2.year, car2.color, car2.for_sale)
+# print(car3.model, car3.year, car3.color, car3.for_sale)
+
+# car1.drive()
+# car1.stop()
+# car2.drive()
+# car2.stop()
+# car3.drive()
+# car3.stop()
+
+
+# 47. class variable = Shared among all instances of a class 
+#                      Defined outside the constructor 
+#                      Allow you to share data among all objects created from that class
+
+# class Student:
+
+#     class_year = 2024
+#     num_student = 0
+
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#         Student.num_student += 1
+
+# student1 = Student("Dadan Darmawan", 21)
+# student2 = Student("Wisnu Mukti", 17)
+
+# print(f"{student1.name} {student1.age} the class of {Student.class_year}")
+# print(f"{student2.name} {student2.age} the class of {Student.class_year}")
+# print(f"The total of student is {Student.num_student}")  
+
+
+# 48. Inheritance = Allows a class to inherit attributes and methods from another class 
+#                   Helps with code reusability and extensibility 
+#                   class child(Parent)
+
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
+#         self.is_alive = True
+
+#     def eat(self):
+#         print(f"{self.name} is eating")
+
+#     def sleep(self):
+#         print(f"{self.name} is sleeping")
+
+# class Dog(Animal):
+#     def speak(self):
+#         print(f"WOOF")
+
+# class Cat(Animal):
+#     def speak(self):
+#         print(f"MEOW")
+
+# class Mouse(Animal):
+#     def speak(self):
+#         print(f"SQUEK")
+
+# dog = Dog("Scooby")
+# cat = Cat("Darfild")
+# mouse = Mouse("Micky")
+
+# dog.eat()
+# cat.eat()
+# mouse.eat()
+# dog.sleep()
+# cat.sleep()
+# mouse.sleep()
+
+# cat.speak()
