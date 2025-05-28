@@ -1339,4 +1339,383 @@
 #     print("GoodBye!")
 
 # if __name__ == "__main__":
+#     main() 
+
+
+#  42. Banking program
+
+# def show_balance(balance):
+#     print("*********************")
+#     print(f"Your balance is ${balance:.2f}")
+#     print("*********************")
+
+# def deposit():
+#     print("*********************")
+#     amount = float(input("Enter an amount to deposited: "))
+#     print("*********************")
+
+#     if amount < 0:
+#         print("*********************")
+#         print("That's not a valid amount")
+#         print("*********************")
+#         return 0
+#     else:
+#         return amount
+
+# def withdraw(balance):
+#     print("*********************")
+#     amount = float(input("Enter an amount to be withdraw: "))
+#     print("*********************")
+
+#     if amount > balance:
+#         print("*********************")
+#         print("Insufficient funds")
+#         print("*********************")
+#         return 0
+#     elif amount < 0:
+#         print("*********************")
+#         print("Amount must be greater than 0")
+#         print("*********************")
+#         return 0
+#     else:
+#         return amount
+    
+# def main():
+#     balance = 0
+#     is_running = True
+
+#     while is_running:
+#         print("*********************")
+#         print("   Banking Program   ")
+#         print("*********************")
+#         print("1. show balance")
+#         print("2. Deposit")
+#         print("3. Withdraw")
+#         print("4. Exit")
+#         print("*********************")
+
+#         choice = input("Enter your choice between 1 - 4: ")
+
+#         if choice == "1":
+#             show_balance(balance)
+#         elif choice == "2":
+#             balance += deposit()
+#         elif choice == "3":
+#             balance -= withdraw(balance)
+#         elif choice == "4":
+#             is_running = False
+#         else:
+#             print("*********************")
+#             print("That is not a valid choice")
+#             print("*********************")
+#     print("*********************")
+#     print("Thank You! Have a nice day")
+#     print("*********************")
+
+# if __name__ == '__main__':
 #     main()
+
+# 43. slot machine
+# import random
+
+# def spin_row():
+#     symbols = ["🍒", "🍉", "🍊", "🔔", "⭐"]
+
+#     return [random.choice(symbols) for _ in range(3)]
+#     # results = []
+#     # for symbol in range(3):
+#     #     results.append(random.choice(symbols))
+#     # return results
+
+# def print_row(row):
+#     print("*************")
+#     print(" | ".join(row))
+#     print("*************")
+
+# def get_payout(row, bet):
+#     if row[0] == row[1] == row [2]:
+#         if row[0] == "🍒":
+#             return bet * 3
+#         elif row[0] == "🍉":
+#             return bet * 4
+#         elif row[0] == "🍊":
+#             return bet * 5
+#         elif row[0] == "🔔":
+#             return bet * 10
+#         elif row[0] == "⭐":
+#             return bet * 20
+#     return 0        
+
+# def main():
+#     balance = 100
+
+#     print("***************************")
+#     print("Welcome to Python Slots")
+#     print("Symbols: 🍒 🍉 🍊 🔔 ⭐")
+#     print("***************************")
+
+#     while balance > 0:
+#         print(f"Current balance: ${balance}")
+
+#         bet = input("place your bet amount: ")
+
+#         if not bet.isdigit():
+#             print("Please enter a valid number")
+#             continue
+
+#         bet = int(bet)
+
+#         if bet > balance:
+#             print("Insufficient funds")
+#             continue
+
+#         if bet <= 0:
+#             print("Bet must be greater than 0")
+#             continue
+
+#         balance -= bet
+
+#         row = spin_row()
+#         print("Spinning...\n")
+#         print_row(row)
+
+#         payout = get_payout(row, bet)
+
+#         if payout > 0:
+#             print(f"You won ${payout}")
+#         else:
+#             print("Sorry you lost this round")
+
+#         balance += payout
+
+#         play_again = input("Do you want to spin again? (Y/N) ").upper()
+
+#         if play_again != "Y" :
+#             break
+
+#     print("********************************************")
+#     print(f"Game over! Your final balance is ${balance}")
+#     print("********************************************")
+
+# if __name__ == '__main__':
+#     main()
+
+# 44. encryption program
+# import random
+# import string
+
+# chars = " " + string.punctuation + string.digits + string.ascii_letters
+# chars = list(chars)
+# key = chars.copy()
+
+# random.shuffle(key)
+
+# # print(f"chars : {chars}")
+# # print(f"key   : {key}")
+
+# # Encript
+# plain_text = input("Enter a message to encript: ")
+# cipher_text = ""
+
+# for letter in plain_text:
+#     index = chars.index(letter)
+#     cipher_text += key[index]
+
+# print(f"Original message : {plain_text}")
+# print(f"encrypted message : {cipher_text}")
+
+# # Decrypt
+# cipher_text = input("Enter a message to encript: ")
+# plain_text = ""
+
+# for letter in cipher_text:
+#     index = key.index(letter)
+#     plain_text += chars[index]
+
+# print(f"encrypted message : {cipher_text}")
+# print(f"Original message : {plain_text}")
+
+# 45. hangman game
+# from words import animals
+# import random
+
+# # hewan = ("singa", "harimau", "buaya")
+# # dictionary of key:()
+# hangman_art = {0:("   ",
+#                   "   ",
+#                   "   "),
+#                1:(" o ",
+#                   "   ",
+#                   "   "),
+#                2:(" o ",
+#                   " | ",
+#                   "   "),
+#                3:(" o ",
+#                   "/| ",
+#                   "   "),
+#                4:(" O ",
+#                   "/|\\",
+#                   "   "),
+#                5:(" o ",
+#                   "/|\\",
+#                   "/  "),
+#                6:(" o ",
+#                   "/|\\",
+#                   "/ \\")
+#                }
+
+# # for line in hangman_art[6]:
+# #     print(line)
+
+# def display_man(wrong_guesses):
+#     print("*****************")
+#     for line in hangman_art[wrong_guesses]:
+#         print(line)
+#     print("*****************")
+
+# def display_hint(hint):
+#     print(" ".join(hint))
+
+# def display_answer(answer):
+#     print (" ".join(answer))
+
+# def main():
+#     answer = random.choice(animals)
+#     hint = ["_"] * len(answer)
+#     wrong_guesses = 0
+#     guesesd_letters = set()
+#     is_running = True
+
+#     while is_running:
+#         display_man(wrong_guesses)
+#         display_hint(hint)
+#         # display_answer(answer)
+#         guess = input("Enter a letter: ").lower()
+
+#         if len(guess) != 1 or not guess.isalpha():
+#             print("Invalid input")
+#             continue
+
+#         if guess in guesesd_letters:
+#             print(f"{guess} is already guessed")
+#             continue
+
+#         guesesd_letters.add(guess)
+
+#         if guess in answer:
+#             for i in range(len(answer)):
+#                 if answer[i] == guess:
+#                     hint[i] = guess
+#         else:
+#             wrong_guesses += 1
+
+#         if "_" not in hint:
+#             display_man(wrong_guesses)
+#             display_answer(answer)
+#             print("YOU WIN!!!")
+#             is_running = False
+#         elif wrong_guesses >= len(hangman_art)- 1:
+#             display_man(wrong_guesses)
+#             display_answer(answer)
+#             print("YOU Lose!!!")
+#             is_running = False
+
+# if __name__ == "__main__":
+#     main()
+
+# 46. python object oriented programming
+# object    = A "bundle" of related attributes (variables) and methods (functions)
+#             Ex. phone, cup, book
+#             You need a "class" to create many objects
+# class     = (blueprint) used to design the structure and layout of an object
+
+# class Car:
+#     def __init__(self, model, year, color, for_sale):
+#         self.model = model
+#         self.year = year
+#         self.color = color
+#         self.for_sale = for_sale    
+
+#     def drive(self):
+#         print(f"You drive the {self.color} {self.model} that car is created by {self.year}")
+
+#     def stop(self):
+#         print(f"You stop the {self.color} {self.model} that car is created by {self.year}")
+
+# car1 = Car("Toyota Zenix", 2024, "White", False)
+# car2 = Car("Toyota Yaris Cross", 2024, "White", False)
+# car3 = Car("Suzuki Ertiga", 2023, "White", True)
+
+# print(car1.model, car1.year, car1.color, car1.for_sale)
+# print(car2.model, car2.year, car2.color, car2.for_sale)
+# print(car3.model, car3.year, car3.color, car3.for_sale)
+
+# car1.drive()
+# car1.stop()
+# car2.drive()
+# car2.stop()
+# car3.drive()
+# car3.stop()
+
+
+# 47. class variable = Shared among all instances of a class 
+#                      Defined outside the constructor 
+#                      Allow you to share data among all objects created from that class
+
+# class Student:
+
+#     class_year = 2024
+#     num_student = 0
+
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#         Student.num_student += 1
+
+# student1 = Student("Dadan Darmawan", 21)
+# student2 = Student("Wisnu Mukti", 17)
+
+# print(f"{student1.name} {student1.age} the class of {Student.class_year}")
+# print(f"{student2.name} {student2.age} the class of {Student.class_year}")
+# print(f"The total of student is {Student.num_student}")  
+
+
+# 48. Inheritance = Allows a class to inherit attributes and methods from another class 
+#                   Helps with code reusability and extensibility 
+#                   class child(Parent)
+
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
+#         self.is_alive = True
+
+#     def eat(self):
+#         print(f"{self.name} is eating")
+
+#     def sleep(self):
+#         print(f"{self.name} is sleeping")
+
+# class Dog(Animal):
+#     def speak(self):
+#         print(f"WOOF")
+
+# class Cat(Animal):
+#     def speak(self):
+#         print(f"MEOW")
+
+# class Mouse(Animal):
+#     def speak(self):
+#         print(f"SQUEK")
+
+# dog = Dog("Scooby")
+# cat = Cat("Darfild")
+# mouse = Mouse("Micky")
+
+# dog.eat()
+# cat.eat()
+# mouse.eat()
+# dog.sleep()
+# cat.sleep()
+# mouse.sleep()
+
+# cat.speak()
