@@ -1889,3 +1889,414 @@
 
 # for animal in animals:
 #     animal.speak()
+
+
+# Static methods = A method that belong to a class rather than any object from that class (instance) 
+#                  Usually used for general utility functions
+
+# Instance methods = Best for operations on instances of the class (objects)
+# Static methods = Best for utility functions that do not need access to class data
+
+# class Employee:
+#     def __init__(self, name, position):
+#         self.name = name
+#         self.position = position
+
+
+#     def get_info(self):
+#         return f"{self.name} = {self.position}"
+    
+#     @staticmethod
+#     def is_valid_position(position):
+#         valid_position = ["Manager", "Cashier", "Cook", "Janitor"]
+#         return position in valid_position
+    
+# empolyee1 = Employee("Dadan", "Manager")
+# empolyee2 = Employee("Wisnu", "Cashier")
+    
+# print(Employee.is_valid_position("Cook"))
+# print(empolyee1.get_info())
+
+
+# 54. class method = allow operations related to the class itself 
+#                    Take (cls) as the first parameter, which represents the class itself
+
+# class Student:
+
+#     count = 0
+#     total_gpa = 0
+
+#     def __init__(self, name, gpa):
+#         self.name = name
+#         self.gpa = gpa
+#         Student.count += 1
+#         Student.total_gpa += gpa
+
+#     # Instance Method
+#     def get_info(self):
+#         return f"{self.name} {self.gpa}"
+    
+#     @classmethod
+#     def get_count(cls):
+#         return f"Total number of students {cls.count}"
+    
+#     @classmethod
+#     def get_average_gpa(cls):
+#         if cls.count == 0:
+#             return 0
+#         else:
+#             return f"Avarage gpa : {cls.total_gpa / cls.count}"
+    
+# student1 = Student("Dadan", 4.0)
+# student2 = Student("Wisnu", 3.9)
+# student3 = Student("Nisa", 3.8)
+
+# print(Student.get_count())
+# print(Student.get_average_gpa()) 
+
+
+# 55. Magic methods = Dunder method (double underscore) __init__,__str__, __eq__ 
+#                     They are automatically called by many of Python's built-in operations. 
+#                     They allow developers to define or customize the behavior of objects
+
+# class Book:
+
+#     def __init__(self, title, author, num_pages):
+#         self.title = title
+#         self.author = author
+#         self.num_pages = num_pages
+
+#     def __str__(self):
+#         return f"{self.title} by {self.author} the num_pages is {self.num_pages}"
+    
+#     def __eq__(self, value):
+#         return self.title == value.title and self.author == value.author and self.num_pages == value.num_pages
+
+#     def __lt__(self, value):
+#         return self.num_pages < value.num_pages
+    
+#     def __gt__(self, value):
+#         return self.num_pages > value.num_pages
+    
+#     def __add__(self, value):
+#         return self.num_pages + value.num_pages
+    
+#     def __contains__(self, keyword):
+#         return keyword in self.title or keyword in self.author
+    
+#     def __getitem__(self, key):
+#         if key == "title":
+#             return self.title
+#         elif key == "author":
+#             return self.author
+#         elif key == "num_pages":
+#             return self.num_pages
+#         else:
+#             return f"Key '{key}' was not found"    
+    
+# book1 = Book("How to be a great man", "Dadan Darmawan", 319)
+# book2 = Book("Life is your", "Wisnu Mukti", 198)
+# book3 = Book("This is about fight or watch", "Dudun", 413)
+# book4 = Book("How to be a great man", "Dadan Darmawan", 319) 
+
+# print(book1)
+# print(book1 == book3)
+# print(book1 > book3)
+# print(book1 + book3)
+# print("Life" in book2)
+# print(book1['title'])
+
+# 57. property = Decorated used to define a method as a property (it can be accessed like an attribute)
+#                Benefit: add additional logic when read, write or delete attributes
+#                Gives you getter, setter and deleter method
+
+# class Rectangle:
+#     def __init__(self, width, height):
+#         self._width = width
+#         self._height = height
+
+#     @property
+#     def width(self):
+#         return f"{self._width:.1f}cm"
+
+#     @property
+#     def height(self):
+#         return f"{self._height:.1f}cm"
+    
+#     @width.setter
+#     def width(self, new_width):
+#         if new_width > 0:
+#             self._width = new_width
+#         else:
+#             print("Width must be greater than zero")
+
+#     @height.setter
+#     def height(self, new_height):
+#         if new_height > 0:
+#             self._height = new_height
+#         else:
+#             print("Height must be greater than zero")
+            
+#     @width.deleter
+#     def width(self):
+#         del self._width
+#         print("Width has been deleted")
+
+#     @height.deleter
+#     def height(self):
+#         del self._height  
+#         print("Width has been deleted")
+
+# rectangle = Rectangle(3, 4)
+
+# rectangle.width = 4
+# rectangle.height = 5
+
+# print(rectangle._width)
+# print(rectangle._height)
+
+# del rectangle.width
+# del rectangle.height
+
+# 57. Decorators = A function that extends the bahavior of another function 
+#                  w/o the base function 
+#                  Pass the base function as an argument to the decorator
+
+# def add_sprinkles(func):
+#     def wrapper(*args, **kwargs):
+#         print("You add sprinkles")
+#         func(*args, **kwargs)
+#     return wrapper
+
+# def add_fudge(func):
+#     def wrapper(*args, **kwargs):
+#         print("You add fudge")
+#         func(*args, **kwargs)
+#     return wrapper
+
+# @add_sprinkles
+# @add_fudge
+
+# def get_ice_cream(flavor):
+#     print(f"Here is {flavor} your ice cream")
+
+# get_ice_cream("Vanilla")
+
+
+# 58. exception = An event that interrupts the flow of a program 
+#                 (ZeroDivisionErro, TypeError, ValueError) 
+#                 1. try 2. except 3. finally
+
+# try:
+#     number = int(input("Enter a number: "))
+#     print(1 / number)
+# except ValueError: 
+#     print(f"Enter only numbers please")
+# except TypeError:
+#     print(f"the must be number")
+# except ZeroDivisionError:
+#     print(f"you cant divide by zero")
+# finally:
+#     print("you look good")
+
+
+# 59. file detection
+
+# import os
+
+# file_path = "PythonProject"
+
+# if os.path.exists(file_path):
+#     print(f"The location '{file_path}' exists")
+#     if os.path.isfile(file_path):
+#         print("That is a file")
+#     elif os.path.isdir(file_path):
+#         print("That is a directory")
+# else:
+#     print(f"That location '{file_path}' doesn't exist")
+
+
+# 60. Python writing files (.txt, .json, .csv)
+
+# txt_data = "Asalamualaikum"
+
+# file_path = "PythonProject/test.txt"
+
+# # "w", "x" "a"
+# try:
+#     with open(file_path, "a") as file:
+#         file.write(" " + txt_data)
+#         print(f"txt file '{file_path}' was created")
+# except FileExistsError:
+#     print("File already exist")
+
+# txt
+# employees = ["Dadan", "Wisnu", "Risep"]
+
+# file_path = "PythonProject/output.txt"
+
+# try:
+#     with open(file_path, "w") as file:
+#         for employee in employees:
+#             file.write(employee + " ")
+#         print("that file was created")
+# except FileExistsError:
+#     print("file already exist")
+
+# # json
+# import json
+
+# employees = {
+#     "name"  : "Dadan", 
+#     "age"   : "21",
+#     "jobs"  : "Software Developer"
+#     }
+
+# file_path = "PythonProject/output.json"
+
+# try:
+#     with open(file_path, "w") as file:
+#         json.dump(employees, file, indent=4)
+#         print("that file was created")
+# except FileExistsError:
+#     print("file already exist")
+
+# csv
+# import csv
+
+# employees = [["Name", "Age", "Job"],
+#              ["Dadan", 20, "cook"],
+#              ["wisnu", 10, "footballer"],
+#              ["risep", 30, "unemployed"]]
+
+# file_path = "PythonProject/output.csv"
+
+# try:
+#     with open(file_path, "w", newline="") as file:
+#         writer = csv.writer(file)
+#         for row in employees:
+#             writer.writerow(row)
+#         print("that file was created")
+# except FileExistsError:
+#     print("file already exist")
+
+
+# 61. Python reading files (.txt, .json, .csv)
+
+# txt
+# file_path = "PythonProject/output.txt"
+
+# with open(file_path, "r") as file:
+#     content = file.read()
+#     print(content)
+
+# json
+# import json
+
+# file_path = "PythonProject/output.json"
+
+# with open(file_path, "r") as file:
+#     content = json.load(file)
+#     print(content["name"])
+
+# csv
+# import csv
+
+# file_path = "PythonProject/output.csv"
+
+# with open(file_path, "r") as file:
+#     content = csv.reader(file)
+#     for line in content:
+#         print(line[1])
+
+
+# 62. dates and time
+
+# import datetime
+
+# date = datetime.date(2025, 1, 1)
+# today = datetime.date.today()
+
+# time = datetime.time(12, 30, 50)
+# now = datetime.datetime.now()
+
+# right_now = now.strftime("%H:%M:%S %m-%d-%Y")
+# # print(right_now)
+
+# target_datetime = datetime.datetime(2030, 1, 1, 12, 30, 50)
+# current_datetime = datetime.datetime.now()
+
+# if target_datetime < current_datetime:
+#     print("your time is expired")
+# else:
+#     print("you have many time")
+
+
+# 63. python alarm clock
+
+# import time
+# import datetime
+# import pygame
+
+# def set_alarm(alarm_time):
+#     print(f"Alarm set for {alarm_time}")
+#     sound_file = "PythonProject/phlwn-syhd.mp3"
+#     is_running = True
+
+#     while is_running:
+#         current_time = datetime.datetime.now().strftime("%H:%M:%S")
+#         print(current_time)
+
+#         if current_time == alarm_time:
+#             print("wake up!")
+
+#             pygame.mixer.init()
+#             pygame.mixer.music.load(sound_file)
+#             pygame.mixer.music.play()
+
+#             is_running = False
+            
+#         time.sleep(1)
+
+# if __name__ == "__main__":
+#     alarm_time = input("Enter the alarm time (HH:MM:SS): ")
+#     set_alarm(alarm_time)
+
+# # 64. Multithreading = used to perform multiple concurrently (multitasking) 
+#                        good for i/o bound task like reading files or featching data from APIs
+#                        threading.Thread(target=my_function)
+
+# import threading
+# import time
+
+# def walk_dog(first, last):
+#     time.sleep(8)
+#     print(f"You finish walking {first} {last}")
+
+# def take_out_trash():
+#     time.sleep(2)
+#     print("You take the trash")
+
+# def get_mail():
+#     time.sleep(4)
+#     print("You got the mail")
+
+# # walk_dog()
+# # take_out_trash()
+# # get_mail()
+
+# chore1 = threading.Thread(target=walk_dog, args=("Scooby", "Doo"))
+# chore1.start()
+
+# chore2 = threading.Thread(target=take_out_trash)
+# chore2.start()
+
+# chore3 = threading.Thread(target=get_mail)
+# chore3.start()
+
+# chore1.join()
+# chore2.join()
+# chore3.join()
+
+# print("All chores are complete")
+
