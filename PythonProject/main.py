@@ -479,7 +479,7 @@
 #         print(x, y)
 #     print("Done")
 
-# 21. list, sets, and tuples
+#  21. list, sets, and tuples
 # collection     = single "variable" used to store multiple values 
 #       list     = [] ordered and changeable, Duplicates OK 
 #       Set      = {} unordered and immutable, but add/remove OK. No duplicates 
@@ -577,12 +577,14 @@
 #     for numped in number:
 #         print(numped, end=" ")
 #     print()
+
+
 # 23. Question quiz game
 
 # questions = ("How many elements are in the periodic table?: ",
 #             "Whic animal lays the large eggs?: ",
 #             "What is the most abundant gas in earth's atmosphere?: ",
-#             "How many bones are in the human body?: ",
+#             "How many bones   are in the human body?: ",
 #             "Which planet in the solar system is the hottest?: ")
 
 # options = (("A. 116", "B. 117", "C. 118", "D. 119"), 
@@ -2299,4 +2301,447 @@
 # chore3.join()
 
 # print("All chores are complete")
+
+
+#65. Request API data
+# How to connect to an API using Python
+
+# import requests
+
+# base_url = "https://pokeapi.co/api/v2/"
+
+# def get_pokemon_info(name):
+#     url = f"{base_url}/pokemon/{name}"
+#     response = requests.get(url)
+    
+#     if response.status_code == 200:
+#         pokemon_data = response.json()
+#         return (pokemon_data)
+#     else:
+#         print(f"failed to retrive data {response.status_code}")
+
+# pokemon_name = "pikachu"
+# pokemon_info = get_pokemon_info(pokemon_name)
+
+# if pokemon_info:
+#     print(f"name : {pokemon_info["name"].capitalize()}")
+#     print(f"id : {pokemon_info["id"]}")
+#     print(f"height : {pokemon_info["height"]}")
+#     print(f"weight : {pokemon_info["weight"]}")
+
+
+# 66. PyQt5 GUI intro
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+## PyQt5 Qlabels
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+# from PyQt5.QtGui import QIcon, QFont
+# from PyQt5.QtCore import Qt 
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+
+#         label = QLabel("Hello", self)
+#         label.setFont(QFont("Arial", 40))
+#         label.setGeometry(0, 0, 500, 200)
+#         label.setStyleSheet("color: #292929;"
+#                             "background-color: #6fdcf7;"
+#                             "font-weight: bold;"
+#                             "font-style: italic;"
+#                             "text-decoration: underline;")
+        
+        # label.setAlignment(Qt.AlignTop) # VERTICALY TOP 
+        # label.setAlignment(Qt.AlignBottom) # Vertically Bottom
+        # label.setAlignment(Qt.AlignVCenter) # Vertically Center
+
+        # label.setAlignment(Qt.AlignRight) # Horizontaly right
+        # label.setAlignment(Qt.AlignHCenter) # Horizontaly center
+        # label.setAlignment(Qt.AlignLeft) # Horizotaly left
+
+        # label.setAlignment(Qt.AlignHCenter | Qt.AlignTop) # Center & Top
+        # label.setAlignment(Qt.AlignHCenter | Qt.AlignBottom) # Center & Bottom
+        # label.setAlignment(Qt.AlignHCenter | Qt.AlignCenter) # Center & Center
+        # label.setAlignment(Qt.AlignCenter) # Center & Center
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+## PyQt5 Images
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+# from PyQt5.QtGui import QIcon, QPixmap #images
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+
+#         label = QLabel(self)
+#         label.setGeometry(0, 0, 250, 250)
+
+#         pixmap = QPixmap("photo_profile.jpg")
+#         label.setPixmap(pixmap)
+
+#         label.setScaledContents(True)
+
+#         label.setGeometry((self.width() - label.width()) // 2,
+#                           (self.height() - label.height()) // 2, 
+#                           label.width(), 
+#                           label.height())
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# PyQt5 layout
+
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+#         self.initUI()
+
+#     def initUI(self):
+#         central_widget = QWidget()
+#         self.setCentralWidget(central_widget)
+
+#         label1 = QLabel("#1", self)
+#         label2 = QLabel("#2", self)
+#         label3 = QLabel("#3", self)
+#         label4 = QLabel("#4", self)
+#         label5 = QLabel("#5", self)
+
+#         label1.setStyleSheet("Background-color: red;")
+#         label2.setStyleSheet("Background-color: yellow;")
+#         label3.setStyleSheet("Background-color: green;")
+#         label4.setStyleSheet("Background-color: blue;")
+#         label5.setStyleSheet("Background-color: purple;")
+
+        # hbox = QHBoxLayout() # horizontal
+
+        # hbox.addWidget(label1)
+        # hbox.addWidget(label2)
+        # hbox.addWidget(label3)
+        # hbox.addWidget(label4)
+        # hbox.addWidget(label5)
+
+        # central_widget.setLayout(hbox)
+
+        # vbox = QVBoxLayout() # Vertikal
+
+        # vbox.addWidget(label1)
+        # vbox.addWidget(label2)
+        # vbox.addWidget(label3)
+        # vbox.addWidget(label4)
+        # vbox.addWidget(label5)
+
+        # central_widget.setLayout(vbox)
+
+#         grid = QGridLayout()
+
+#         grid.addWidget(label1, 0, 0)
+#         grid.addWidget(label2, 0, 1)
+#         grid.addWidget(label3, 1, 0)
+#         grid.addWidget(label4, 1, 1)
+#         grid.addWidget(label5, 1, 2)
+
+#         central_widget.setLayout(grid)     
+        
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# # PyQt5 buttons
+
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.button = QPushButton("Click me!", self)
+#         self.label = QLabel("Hello", self)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+#         self.initUI()
+
+#     def initUI(self):
+#         self.button.setGeometry(150, 200, 200, 100)
+#         self.button.setStyleSheet("font-size: 30px;")
+#         self.button.clicked.connect(self.on_click)
+#         self.button.setDisabled(False)
+
+#         self.label.setGeometry(150, 300, 200, 100)
+#         self.label.setStyleSheet("font-size: 30px;")
+
+#     def on_click(self):
+        # # way 1
+        # print("Button clicked!")
+        # self.button.setText("Clicked")
+        # # way 2
+#         self.label.setText("GoodBye")
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# # PyQt5 checkboxes
+
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QCheckBox
+# from PyQt5.QtCore import Qt
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.checkBox = QCheckBox("Do you like food?", self)
+#         self.initUI()
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+
+#     def initUI(self):
+#         self.checkBox.setGeometry(10, 0, 500, 100)
+#         self.checkBox.setStyleSheet("font-size: 30px;"
+#                                     "font-family: Arial;")
+#         self.checkBox.setChecked(False)
+#         self.checkBox.stateChanged.connect(self.checkbox_changed)
+
+#     def checkbox_changed(self, state):
+#         # print(state) # check output 0/2
+#         if state == Qt.Checked:
+#             print("You like food")
+#         else:
+#             print("you DO NOT like food")
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# # PyQt5 radio buttons
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QRadioButton, QButtonGroup
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+#         self.radio1 = QRadioButton("Visa", self)
+#         self.radio2 = QRadioButton("MasterCard", self)
+#         self.radio3 = QRadioButton("Gift Card", self)
+#         self.radio4 = QRadioButton("In-Store", self)
+#         self.radio5 = QRadioButton("Online", self)
+#         self.button_group1 = QButtonGroup(self)
+#         self.button_group2 = QButtonGroup(self)
+#         self.initUI()
+
+#     def initUI(self):
+#         self.radio1.setGeometry(0, 0, 300, 50)
+#         self.radio2.setGeometry(0, 50, 300, 50)
+#         self.radio3.setGeometry(0, 100, 300, 50)
+#         self.radio4.setGeometry(0, 150, 300, 50)
+#         self.radio5.setGeometry(0, 200, 300, 50)
+#         self.setStyleSheet("QRadioButton{"
+#                            "font-size: 40px;"
+#                            "font-family: Arial"
+#                            "padding: 10px"
+#                            "}")
+#         self.button_group1.addButton(self.radio1)
+#         self.button_group1.addButton(self.radio2)
+#         self.button_group1.addButton(self.radio3)
+#         self.button_group2.addButton(self.radio4)
+#         self.button_group2.addButton(self.radio5)
+
+#         self.radio1.toggled.connect(self.radio_button_changed)
+#         self.radio2.toggled.connect(self.radio_button_changed)
+#         self.radio3.toggled.connect(self.radio_button_changed)
+#         self.radio3.toggled.connect(self.radio_button_changed)
+#         self.radio4.toggled.connect(self.radio_button_changed)
+
+#     def radio_button_changed(self):
+#         # print("You selected something")
+#         radio_button = self.sender()
+#         if radio_button.isChecked():
+#             print(f"{radio_button.text()} is selected")
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# # PyQt5 lineEdits
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QPushButton
+# from PyQt5.QtGui import QIcon
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("My cool first GUI")
+#         self.setGeometry(700, 300, 500, 500)
+#         self.setWindowIcon(QIcon("photo_profile.jpg"))
+#         self.line_edit = QLineEdit(self)
+#         self.button = QPushButton("Submit", self)
+#         self.initUI()
+
+#     def initUI(self):
+#         self.line_edit.setGeometry(10, 10, 200, 40)
+#         self.button.setGeometry(210, 10, 100, 40)
+#         self.line_edit.setStyleSheet("font-size: 25px;"
+#                                      "font-family: Arial;")
+#         self.button.setStyleSheet("font-size: 25px;"
+#                                      "font-family: Arial;")
+#         self.line_edit.setPlaceholderText("Enter Your Name baby")
+#         self.button.clicked.connect(self.submit)
+
+#     def submit(self):
+#         # print("you clicked the button")
+#         text = self.line_edit.text()
+#         print(f"Hello {text}")
+
+# def main():
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
+    
+# if __name__ == "__main__":
+#     main()
+
+
+# # PyQt5 CSS Style
+# import sys
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QHBoxLayout
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.button1 = QPushButton("#1")
+#         self.button2 = QPushButton("#2")
+#         self.button3 = QPushButton("#3")
+#         self.initUI()
+
+#     def initUI(self):
+#         central_widget = QWidget()
+#         self.setCentralWidget(central_widget)
+
+#         hbox = QHBoxLayout()
+
+#         hbox.addWidget(self.button1)
+#         hbox.addWidget(self.button2)
+#         hbox.addWidget(self.button3)
+
+#         central_widget.setLayout(hbox)
+
+#         self.button1.setObjectName("button1")
+#         self.button2.setObjectName("button2")
+#         self.button3.setObjectName("button3")
+
+#         self.setStyleSheet("""
+#             QPushButton {
+#                 font-size: 40px;
+#                 font-family: Arial;      
+#                 padding: 15px 75px;
+#                 margin: 15px;
+#                 border: 3px solid;
+#                 border-radius: 15px;     
+#             }
+#             QPushButton#button1 {
+#                            background-color: red;
+#             }              
+#             QPushButton#button2 {
+#                            background-color: yellow;
+#             }              
+#             QPushButton#button3 {
+#                            background-color: green;
+#             }              
+#             QPushButton#button1:hover {
+#                            background-color: darkred;
+#             }              
+#             QPushButton#button2:hover {
+#                            background-color: goldenrod;
+#             }              
+#             QPushButton#button3:hover {
+#                            background-color: darkgreen;
+#             }              
+#         """)
+    
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     window = MainWindow()
+#     window.show()
+#     sys.exit(app.exec_())
 
